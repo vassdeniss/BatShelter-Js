@@ -19,5 +19,8 @@
   "devDependencies": {
     "eslint": "^8.40.0",
     "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "formidable": "^2.1.1"
   }
 }

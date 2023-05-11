@@ -1,7 +1,7 @@
 const { URL } = require('url');
 const fs = require('fs');
 const path = require('path');
-//const cats = require('../data/cats');
+const cats = require('../data/cats');
 
 module.exports = (req, res) => {
   const url = new URL(req.url, 'http://localhost:3000');
@@ -24,11 +24,31 @@ module.exports = (req, res) => {
         return;
       }
 
+      const modifiedCats = cats.map(
+        (cat) => `<li>
+            <img
+              src="/content/images/${cat.image}"
+              alt="${cat.name}"
+            />
+            <h3></h3>
+            <p><span>Breed: </span>${cat.breed}</p>
+            <p>
+              <span>Description: </span>${cat.description}
+            </p>
+            <ul class="buttons">
+              <li class="btn edit"><a href="/cats-edit/${cat.id}">Change Info</a></li>
+              <li class="btn delete"><a href="/cats-find-new-home/${cat.id}">New Home</a></li>
+            </ul>
+          </li>`
+      );
+
+      const modifiedHtml = data.toString().replace('{{cats}}', modifiedCats);
+
       res.writeHead(200, {
         'Content-Type': 'text/html',
       });
 
-      res.write(data);
+      res.write(modifiedHtml);
       res.end();
     });
   } else {

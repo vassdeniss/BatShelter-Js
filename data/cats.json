@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "id": 1,
+    "name": "TestCat",
+    "description": "TestDesc",
+    "breed": "TestBreed",
+    "image": "20230319_215534.jpg"
+  }
+]

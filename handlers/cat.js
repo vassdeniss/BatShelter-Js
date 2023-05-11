@@ -4,6 +4,7 @@ const fs = require('fs');
 const querystring = require('querystring');
 const breeds = require('../data/breeds');
 const cats = require('../data/cats');
+const formidable = require('formidable');
 
 module.exports = (req, res) => {
   const url = new URL(req.url, 'http://localhost:3000');
@@ -95,6 +96,55 @@ module.exports = (req, res) => {
       });
       res.end();
     });
+  } else if (pathname === '/cats/add-cat' && req.method === 'POST') {
+    const form = new formidable.IncomingForm();
+
+    form.parse(req, (err, fields, files) => {
+      if (err) {
+        throw err;
+      }
+
+      const imagePath = files.upload.filepath;
+      const image = fs.readFileSync(imagePath);
+
+      const newPath = path.normalize(
+        path.join(
+          __dirname,
+          `../content/images/${files.upload.originalFilename}`
+        )
+      );
+
+      fs.writeFile(newPath, image, (err) => {
+        if (err) {
+          throw err;
+        }
+
+        console.log('File was uploaded successfully!');
+      });
+
+      fs.readFile('./data/cats.json', 'utf-8', (err, data) => {
+        if (err) {
+          throw err;
+        }
+
+        const cats = JSON.parse(data);
+        cats.push({
+          id: cats.length + 1,
+          ...fields,
+          image: files.upload.originalFilename,
+        });
+
+        const json = JSON.stringify(cats);
+        fs.writeFile('./data/cats.json', json, () => {
+          console.log('Cats successfully updated!');
+        });
+      });
+    });
+
+    res.writeHead(302, {
+      Location: '/',
+    });
+    res.end();
   } else {
     return true;
   }
