@@ -1,0 +1,23 @@
+{
+  "name": "cat-shelter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vassdeniss/CatShelter-Js.git"
+  },
+  "author": "vassdeniss",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vassdeniss/CatShelter-Js/issues"
+  },
+  "homepage": "https://github.com/vassdeniss/CatShelter-Js#readme",
+  "devDependencies": {
+    "eslint": "^8.40.0",
+    "nodemon": "^2.0.22"
+  }
+}
