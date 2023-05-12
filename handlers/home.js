@@ -42,8 +42,6 @@ module.exports = (req, res) => {
           </li>`
       );
 
-      console.log(modifiedBats);
-
       const modifiedHtml = data
         .toString()
         .replace('{{bats}}', modifiedBats.join(''));
