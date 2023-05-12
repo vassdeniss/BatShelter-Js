@@ -206,6 +206,63 @@ module.exports = (req, res) => {
       Location: '/',
     });
     res.end();
+  } else if (pathname.includes('/bats-find-new-home') && req.method === 'GET') {
+    const filePath = path.normalize(
+      path.join(__dirname, '../views/batShelter.html')
+    );
+
+    const batId = Number(url.pathname.substring(20));
+    const {
+      _,
+      name,
+      description,
+      breed: batBreed,
+      image,
+    } = bats.find((bat) => bat.id === batId) || {};
+
+    const stream = fs.createReadStream(filePath);
+
+    stream.on('data', (data) => {
+      const breed = `<option value="${batBreed}">${batBreed}</option>`;
+
+      const modifiedHtml = data
+        .toString()
+        .replace('{{id}}', batId)
+        .replace('{{image}}', image)
+        .replaceAll('{{name}}', name)
+        .replace('{{description}}', description)
+        .replace('{{breed}}', breed);
+
+      handleData(res, modifiedHtml);
+    });
+
+    stream.on('error', (err) => handleError(res, err));
+    stream.on('end', () => handleEnd(res));
+  } else if (
+    pathname.includes('/bats-find-new-home') &&
+    req.method === 'POST'
+  ) {
+    fs.readFile('./data/bats.json', 'utf-8', (err, data) => {
+      if (err) {
+        throw err;
+      }
+
+      const batId = Number(url.pathname.substring(11));
+      const bats = JSON.parse(data);
+
+      const index = bats.findIndex((bat) => bat.id === batId);
+      bats.splice(index, 1);
+
+      const json = JSON.stringify(bats);
+      fs.writeFile('./data/bats.json', json, () => {
+        console.log('Bats successfully updated!');
+      });
+    });
+
+    res.writeHead(302, {
+      Location: '/',
+    });
+    res.end();
   } else {
     return true;
   }
