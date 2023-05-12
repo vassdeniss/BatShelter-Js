@@ -9,7 +9,7 @@
       href="https://use.fontawesome.com/releases/v5.0.7/css/all.css"
       rel="stylesheet"
     />
-    <title>Cat Shelter</title>
+    <title>Edit Bat</title>
   </head>
 
   <body>
@@ -17,31 +17,31 @@
       <nav>
         <ul class="navigation">
           <li><a href="/">Home Page</a></li>
-          <li><a href="/cats/add-breed">Add Breed</a></li>
-          <li><a href="/cats/add-cat">Add Cat</a></li>
+          <li><a href="/bats/add-breed">Add Breed</a></li>
+          <li><a href="/bats/add-bat">Add Bat</a></li>
         </ul>
       </nav>
-      <h1>Cat Shelter</h1>
+      <h1>Bat Shelter</h1>
     </header>
     <main>
       <form
-        action="#"
+        action="/bats-edit/{{id}}"
         method="post"
-        class="cat-form"
+        class="bat-form"
         enctype="multipart/form-data"
       >
-        <h2>Add Cat</h2>
+        <h2>Edit Bat</h2>
         <label for="name">Name</label>
-        <input name="name" type="text" id="name" />
+        <input type="text" id="name" value="{{name}}" />
         <label for="description">Description</label>
-        <textarea name="description" id="description"></textarea>
+        <textarea id="description">{{description}}</textarea>
         <label for="image">Image</label>
-        <input name="upload" type="file" id="image" />
+        <input type="file" id="image" />
         <label for="group">Breed</label>
-        <select name="breed" id="group">
-          {{catBreeds}}
+        <select id="group">
+          {{breeds}}
         </select>
-        <button type="submit">Add Cat</button>
+        <button>Edit Bat</button>
       </form>
     </main>
   </body>

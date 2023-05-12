@@ -1,7 +1,7 @@
 const { URL } = require('url');
 const fs = require('fs');
 const path = require('path');
-const cats = require('../data/cats');
+const bats = require('../data/bats');
 
 module.exports = (req, res) => {
   const url = new URL(req.url, 'http://localhost:3000');
@@ -24,25 +24,25 @@ module.exports = (req, res) => {
         return;
       }
 
-      const modifiedCats = cats.map(
-        (cat) => `<li>
+      const modifiedBats = bats.map(
+        (bat) => `<li>
             <img
-              src="/content/images/${cat.image}"
-              alt="${cat.name}"
+              src="/content/images/${bat.image}"
+              alt="${bat.name}"
             />
             <h3></h3>
-            <p><span>Breed: </span>${cat.breed}</p>
+            <p><span>Breed: </span>${bat.breed}</p>
             <p>
-              <span>Description: </span>${cat.description}
+              <span>Description: </span>${bat.description}
             </p>
             <ul class="buttons">
-              <li class="btn edit"><a href="/cats-edit/${cat.id}">Change Info</a></li>
-              <li class="btn delete"><a href="/cats-find-new-home/${cat.id}">New Home</a></li>
+              <li class="btn edit"><a href="/bats-edit/${bat.id}">Change Info</a></li>
+              <li class="btn delete"><a href="/bats-find-new-home/${bat.id}">New Home</a></li>
             </ul>
           </li>`
       );
 
-      const modifiedHtml = data.toString().replace('{{cats}}', modifiedCats);
+      const modifiedHtml = data.toString().replace('{{bats}}', modifiedBats);
 
       res.writeHead(200, {
         'Content-Type': 'text/html',

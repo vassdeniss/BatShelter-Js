@@ -103,12 +103,12 @@ form button:hover {
   color: lightblue;
 }
 
-.cats {
+.bats {
   margin-left: 5rem;
   margin-right: 5rem;
 }
 
-.cats ul {
+.bats ul {
   display: flex;
   list-style: none;
   margin-top: 3rem;
@@ -116,7 +116,7 @@ form button:hover {
   justify-content: flex-start;
 }
 
-.cats li {
+.bats li {
   width: 26.5%;
   margin-left: 5rem;
   margin-bottom: 1.5rem;
@@ -125,7 +125,7 @@ form button:hover {
   border-bottom-right-radius: 7px;
 }
 
-.cats ul li .buttons {
+.bats ul li .buttons {
   margin-top: 1.5rem;
   position: relative;
   left: 1rem;
@@ -136,34 +136,35 @@ form button:hover {
   margin-left: 2rem;
 }
 
-.cats ul li .buttons .btn a {
+.bats ul li .buttons .btn a {
   text-align: center;
-  padding: 5px;
-  border-radius: 17px;
+  padding: 10px;
+  border-radius: 14px;
   color: #fff;
   font-weight: 700;
   cursor: pointer;
   margin-bottom: 1rem;
+  text-decoration: none;
 }
 
-.cats ul li .buttons .edit a {
+.bats ul li .buttons .edit a {
   background-color: #3d99e3;
 }
 
-.cats ul li .buttons .delete a {
+.bats ul li .buttons .delete a {
   background-color: #ff0000d6;
 }
 
-.cats li img {
-  width: 350px;
-  height: 250px;
+.bats li img {
+  width: 200px;
+  height: 200px;
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
   margin: 0 auto;
   display: block;
 }
 
-.cat-form img {
+.bat-form img {
   height: 250px;
   width: 350px;
   margin: auto;
@@ -174,25 +175,25 @@ body > form > label:nth-child(3) {
   margin-top: 1.5rem;
 }
 
-.cats li h3 {
+.bats li h3 {
   text-align: center;
   margin: 0.5rem;
 }
 
-.cats li span {
+.bats li span {
   font-weight: 900;
 }
 
-.cats li p {
+.bats li p {
   margin: 0.5rem;
 }
 
-.cats ul li:hover {
-  opacity: 0.75;
-  transform: scale(0.98);
+.bats ul li:hover {
+  /* opacity: 0.75; */
+  transform: scale(0.95);
 }
 
-.cat-form {
+.bat-form {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -201,16 +202,16 @@ body > form > label:nth-child(3) {
   margin-top: 2.5rem;
 }
 
-.cat-form h2 {
+.bat-form h2 {
   margin-bottom: 1rem;
   text-align: center;
 }
 
-.cat-form label {
+.bat-form label {
   margin: 0 0 0.3rem 0.3rem;
 }
 
-.cat-form button {
+.bat-form button {
   width: 100px;
   margin: auto;
   text-align: center;

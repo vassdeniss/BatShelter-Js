@@ -1,5 +1,5 @@
 const homeHandler = require('./home');
 const staticFileHandler = require('./staticFiles');
-const catHandler = require('./cat');
+const batHandler = require('./bat');
 
-module.exports = [homeHandler, staticFileHandler, catHandler];
+module.exports = [homeHandler, staticFileHandler, batHandler];
