@@ -72,8 +72,6 @@ module.exports = (req, res) => {
         bat.name.toLowerCase().includes(body.name.toLowerCase())
       );
 
-      console.log(body);
-
       const modifiedBats = filteredBats.map(
         (bat) => `<li>
             <img
