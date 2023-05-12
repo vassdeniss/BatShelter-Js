@@ -30,7 +30,7 @@ module.exports = (req, res) => {
               src="/content/images/${bat.image}"
               alt="${bat.name}"
             />
-            <h3></h3>
+            <h3>${bat.name}</h3>
             <p><span>Breed: </span>${bat.breed}</p>
             <p>
               <span>Description: </span>${bat.description}
@@ -42,7 +42,11 @@ module.exports = (req, res) => {
           </li>`
       );
 
-      const modifiedHtml = data.toString().replace('{{bats}}', modifiedBats);
+      console.log(modifiedBats);
+
+      const modifiedHtml = data
+        .toString()
+        .replace('{{bats}}', modifiedBats.join(''));
 
       res.writeHead(200, {
         'Content-Type': 'text/html',

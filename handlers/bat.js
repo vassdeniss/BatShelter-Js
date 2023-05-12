@@ -25,7 +25,7 @@ module.exports = (req, res) => {
         .toString()
         .replace('{{batBreeds}}', replacement);
 
-      handleData(res, modifiedHtml);
+      handleData(res, modifiedHtml.join(''));
     });
 
     stream.on('error', (err) => handleError(res, err));
@@ -152,7 +152,7 @@ module.exports = (req, res) => {
         .replace('{{description}}', description)
         .replace('{{breeds}}', replace);
 
-      handleData(res, modifiedHtml);
+      handleData(res, modifiedHtml.join(''));
     });
 
     stream.on('error', (err) => handleError(res, err));
